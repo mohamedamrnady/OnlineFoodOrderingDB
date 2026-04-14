@@ -10,5 +10,6 @@ static class EntryPoint
     {
         ApplicationConfiguration.Initialize();
         Application.Run(new OffersUI());
+        Application.Run(new MenuUI());
     }
 }

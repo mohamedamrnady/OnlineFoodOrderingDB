@@ -35,6 +35,7 @@ partial class OffersUI
         OfferLabel = new System.Windows.Forms.Label();
         insert = new System.Windows.Forms.Button();
         update = new System.Windows.Forms.Button();
+        manageItems = new System.Windows.Forms.Button();
         tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         delete = new System.Windows.Forms.Button();
         outputbox = new System.Windows.Forms.RichTextBox();
@@ -86,17 +87,30 @@ partial class OffersUI
         update.UseVisualStyleBackColor = true;
         update.Click += update_Click;
         // 
+        // manageItems
+        // 
+        this.manageItems.Anchor = System.Windows.Forms.AnchorStyles.None;
+        this.manageItems.Location = new System.Drawing.Point(959, 3);
+        this.manageItems.Name = "manageItems";
+        this.manageItems.Size = new System.Drawing.Size(157, 73);
+        this.manageItems.TabIndex = 5;
+        this.manageItems.Text = "Manage Items";
+        this.manageItems.UseVisualStyleBackColor = true;
+        this.manageItems.Click += new System.EventHandler(this.manageItems_Click);
+        // 
         // tableLayoutPanel1
         // 
         tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-        tableLayoutPanel1.ColumnCount = 3;
-        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+        tableLayoutPanel1.ColumnCount = 4;
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
         tableLayoutPanel1.Controls.Add(delete, 2, 0);
         tableLayoutPanel1.Controls.Add(insert, 0, 0);
         tableLayoutPanel1.Controls.Add(update, 1, 0);
+        tableLayoutPanel1.Controls.Add(this.manageItems, 3, 0);
         tableLayoutPanel1.Location = new System.Drawing.Point(2, 311);
         tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -126,7 +140,7 @@ partial class OffersUI
         outputbox.TabIndex = 7;
         outputbox.Text = "";
         // 
-        // MenuUI
+        // OffersUI
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +149,7 @@ partial class OffersUI
         Controls.Add(tableLayoutPanel1);
         Controls.Add(OfferLabel);
         Controls.Add(dataview);
-        Text = "MenuUI";
+        Text = "OffersUI";
         Load += OffersUI_Load;
         ((System.ComponentModel.ISupportInitialize)dataview).EndInit();
         tableLayoutPanel1.ResumeLayout(false);
@@ -147,6 +161,7 @@ partial class OffersUI
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
     private System.Windows.Forms.Button delete;
+    private System.Windows.Forms.Button manageItems;
 
     private System.Windows.Forms.Button insert;
     private System.Windows.Forms.Button update;

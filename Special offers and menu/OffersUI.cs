@@ -1,3 +1,6 @@
+using System.Drawing;
+using Microsoft.EntityFrameworkCore;
+
 namespace OFODBGUI.Models;
 
 public partial class OffersUI : Form
@@ -31,13 +34,20 @@ public partial class OffersUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (SpecialOffer)dataview.CurrentRow.DataBoundItem;
-            using (var form = new OfferUpdateForm(selectedItem))
+            var selectedId = (int)dataview.CurrentRow.Cells["Offerid"].Value;
+            using (var context = new NeondbContext())
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                var selectedItem = context.SpecialOffers.Find(selectedId);
+                if (selectedItem != null)
                 {
-                    load_Table(sender, e);
-                    LogAction($"updated {form.UpdatedOffer.Offername}");
+                    using (var form = new OfferUpdateForm(selectedItem))
+                    {
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            load_Table(sender, e);
+                            LogAction($"updated {form.UpdatedOffer.Offername}");
+                        }
+                    }
                 }
             }
         }
@@ -51,8 +61,10 @@ public partial class OffersUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (SpecialOffer)dataview.CurrentRow.DataBoundItem;
-            var confirmResult = MessageBox.Show($"Are you sure you want to delete {selectedItem.Offername}?",
+            var selectedId = (int)dataview.CurrentRow.Cells["Offerid"].Value;
+            var offerName = (string?)dataview.CurrentRow.Cells["Offername"].Value ?? "Unknown Offer";
+
+            var confirmResult = MessageBox.Show($"Are you sure you want to delete {offerName}?",
                                      "Confirm Delete",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -61,13 +73,13 @@ public partial class OffersUI : Form
                 {
                     using (var context = new NeondbContext())
                     {
-                        var itemToDelete = context.MenuItems.Find(selectedItem.Offerid);
+                        var itemToDelete = context.SpecialOffers.Find(selectedId);
                         if (itemToDelete != null)
                         {
-                            context.MenuItems.Remove(itemToDelete);
+                            context.SpecialOffers.Remove(itemToDelete);
                             context.SaveChanges();
                             MessageBox.Show("Special offer deleted successfully!");
-                            LogAction($"deleted {selectedItem.Offername}");
+                            LogAction($"deleted {offerName}");
                             load_Table(sender, e);
                         }
                     }
@@ -84,6 +96,70 @@ public partial class OffersUI : Form
         }
     }
 
+    private void manageItems_Click(object sender, EventArgs e)
+    {
+        if (dataview.CurrentRow != null)
+        {
+            var selectedOfferId = (int)dataview.CurrentRow.Cells["Offerid"].Value;
+            using (var form = new ManageOfferItemsForm(selectedOfferId))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (var context = new NeondbContext())
+                        {
+                            var offer = context.SpecialOffers
+                                .Include(o => o.Items)
+                                .FirstOrDefault(o => o.Offerid == selectedOfferId);
+
+                            if (offer != null)
+                            {
+                                // Remove items not in SelectedItemIds
+                                var itemsToRemove = offer.Items
+                                    .Where(i => !form.SelectedItemIds.Contains(i.Itemid))
+                                    .ToList();
+                                foreach (var item in itemsToRemove)
+                                {
+                                    offer.Items.Remove(item);
+                                }
+
+                                // Add new items
+                                var currentItemIds = offer.Items.Select(i => i.Itemid).ToHashSet();
+                                var itemIdsToAdd = form.SelectedItemIds
+                                    .Where(id => !currentItemIds.Contains(id))
+                                    .ToList();
+
+                                foreach (var itemId in itemIdsToAdd)
+                                {
+                                    var item = context.MenuItems.Find(itemId);
+                                    if (item != null)
+                                    {
+                                        offer.Items.Add(item);
+                                    }
+                                }
+
+                                context.SaveChanges();
+                                string offerName = offer.Offername ?? "Unknown Offer";
+                                LogAction($"Updated items for offer: {offerName}");
+                                MessageBox.Show("Offer items updated successfully!");
+                                load_Table(sender, e);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating offer items: {ex.Message}");
+                    }
+                }
+            }
+        }
+        else
+        {
+            MessageBox.Show("Please select an offer to manage its items.");
+        }
+    }
+
     private void OffersUI_Load(object sender, EventArgs e)
     {
         load_Table(sender, e);
@@ -93,7 +169,19 @@ public partial class OffersUI : Form
     {
         using (var context = new NeondbContext())
         {
-            var data = context.SpecialOffers.ToList(); 
+            var data = context.SpecialOffers
+                .Include(o => o.Items)
+                .Select(o => new
+                {
+                    o.Offerid,
+                    o.Offername,
+                    o.Startdate,
+                    o.Enddate,
+                    o.Minpoints,
+                    o.Dayoftheweek,
+                    Items = string.Join(", ", o.Items.Select(i => i.Itemname).ToList())
+                })
+                .ToList();
 
             dataview.DataSource = data;
         }

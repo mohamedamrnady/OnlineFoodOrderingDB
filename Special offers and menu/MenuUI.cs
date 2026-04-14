@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace OFODBGUI.Models;
 
 public partial class MenuUI : Form
@@ -33,13 +35,20 @@ public partial class MenuUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (MenuItem)dataview.CurrentRow.DataBoundItem;
-            using (var form = new updateForm(selectedItem))
+            var selectedId = (int)dataview.CurrentRow.Cells["Itemid"].Value;
+            using (var context = new NeondbContext())
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                var selectedItem = context.MenuItems.Find(selectedId);
+                if (selectedItem != null)
                 {
-                    load_Table(sender, e);
-                    LogAction($"updated {form.UpdatedItem.Itemname}");
+                    using (var form = new updateForm(selectedItem))
+                    {
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            load_Table(sender, e);
+                            LogAction($"updated {form.UpdatedItem.Itemname}");
+                        }
+                    }
                 }
             }
         }
@@ -53,8 +62,10 @@ public partial class MenuUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (MenuItem)dataview.CurrentRow.DataBoundItem;
-            var confirmResult = MessageBox.Show($"Are you sure you want to delete {selectedItem.Itemname}?",
+            var selectedId = (int)dataview.CurrentRow.Cells["Itemid"].Value;
+            var itemName = (string?)dataview.CurrentRow.Cells["Itemname"].Value ?? "Unknown Item";
+
+            var confirmResult = MessageBox.Show($"Are you sure you want to delete {itemName}?",
                                      "Confirm Delete",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -63,13 +74,13 @@ public partial class MenuUI : Form
                 {
                     using (var context = new NeondbContext())
                     {
-                        var itemToDelete = context.MenuItems.Find(selectedItem.Itemid);
+                        var itemToDelete = context.MenuItems.Find(selectedId);
                         if (itemToDelete != null)
                         {
                             context.MenuItems.Remove(itemToDelete);
                             context.SaveChanges();
                             MessageBox.Show("Menu item deleted successfully!");
-                            LogAction($"deleted {selectedItem.Itemname}");
+                            LogAction($"deleted {itemName}");
                             load_Table(sender, e);
                         }
                     }
@@ -95,7 +106,18 @@ public partial class MenuUI : Form
     {
         using (var context = new NeondbContext())
         {
-            var data = context.MenuItems.ToList(); 
+            var data = context.MenuItems
+                .Include(m => m.Offers)
+                .Select(m => new
+                {
+                    m.Itemid,
+                    m.Itemname,
+                    m.Itemdescription,
+                    m.Category,
+                    m.Availability,
+                    Offers = string.Join(", ", m.Offers.Select(o => o.Offername).ToList())
+                })
+                .ToList();
 
             dataview.DataSource = data;
         }
