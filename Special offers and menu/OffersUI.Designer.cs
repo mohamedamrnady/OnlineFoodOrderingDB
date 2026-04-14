@@ -2,9 +2,9 @@ using System.ComponentModel;
 
 namespace OFODBGUI.Models;
 
-partial class MenuUI
+partial class OffersUI
 {
-    /// <summary>
+   /// <summary>
     /// Required designer variable.
     /// </summary>
     private IContainer components = null;
@@ -32,7 +32,7 @@ partial class MenuUI
     private void InitializeComponent()
     {
         dataview = new System.Windows.Forms.DataGridView();
-        MenuLabel = new System.Windows.Forms.Label();
+        OfferLabel = new System.Windows.Forms.Label();
         insert = new System.Windows.Forms.Button();
         update = new System.Windows.Forms.Button();
         tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -55,14 +55,14 @@ partial class MenuUI
         // 
         // MenuLabel
         // 
-        MenuLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-        MenuLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-        MenuLabel.Location = new System.Drawing.Point(460, -3);
-        MenuLabel.Name = "MenuLabel";
-        MenuLabel.Size = new System.Drawing.Size(146, 38);
-        MenuLabel.TabIndex = 1;
-        MenuLabel.Text = "Menu";
-        MenuLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+        OfferLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+        OfferLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+        OfferLabel.Location = new System.Drawing.Point(460, -3);
+        OfferLabel.Name = "OfferLabel";
+        OfferLabel.Size = new System.Drawing.Size(146, 38);
+        OfferLabel.TabIndex = 1;
+        OfferLabel.Text = "Offers";
+        OfferLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
         // 
         // insert
         // 
@@ -133,10 +133,10 @@ partial class MenuUI
         ClientSize = new System.Drawing.Size(1256, 691);
         Controls.Add(outputbox);
         Controls.Add(tableLayoutPanel1);
-        Controls.Add(MenuLabel);
+        Controls.Add(OfferLabel);
         Controls.Add(dataview);
         Text = "MenuUI";
-        Load += MenuUI_Load;
+        Load += OffersUI_Load;
         ((System.ComponentModel.ISupportInitialize)dataview).EndInit();
         tableLayoutPanel1.ResumeLayout(false);
         ResumeLayout(false);
@@ -151,7 +151,7 @@ partial class MenuUI
     private System.Windows.Forms.Button insert;
     private System.Windows.Forms.Button update;
 
-    private System.Windows.Forms.Label MenuLabel;
+    private System.Windows.Forms.Label OfferLabel;
 
     private System.Windows.Forms.DataGridView dataview;
 

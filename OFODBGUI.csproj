@@ -21,6 +21,12 @@
       <Compile Update="Special offers and menu\MenuUI.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Special offers and menu\insertForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Special offers and menu\OffersUI.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -1,14 +1,12 @@
 namespace OFODBGUI.Models;
 
-public partial class MenuUI : Form
+public partial class OffersUI : Form
 {
-    public MenuUI()
+    public OffersUI()
     {
         InitializeComponent();
     }
-
-
-    private void LogAction(string message)
+     private void LogAction(string message)
     {
         outputbox.AppendText($"{message}{Environment.NewLine}");
         outputbox.ScrollToCaret();
@@ -16,14 +14,14 @@ public partial class MenuUI : Form
 
     private void insert_Click(object sender, EventArgs e)
     {
-        using (var form = new insertForm())
+        using (var form = new OfferInsertForm())
         {
             if (form.ShowDialog() == DialogResult.OK)
             {
                 load_Table(sender, e);
-                if (form.NewItem != null)
+                if (form.NewOffer != null)
                 {
-                    LogAction($"inserted {form.NewItem.Itemname}");
+                    LogAction($"inserted {form.NewOffer.Offername}");
                 }
             }
         }
@@ -33,13 +31,13 @@ public partial class MenuUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (MenuItem)dataview.CurrentRow.DataBoundItem;
-            using (var form = new updateForm(selectedItem))
+            var selectedItem = (SpecialOffer)dataview.CurrentRow.DataBoundItem;
+            using (var form = new OfferUpdateForm(selectedItem))
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     load_Table(sender, e);
-                    LogAction($"updated {form.UpdatedItem.Itemname}");
+                    LogAction($"updated {form.UpdatedOffer.Offername}");
                 }
             }
         }
@@ -53,8 +51,8 @@ public partial class MenuUI : Form
     {
         if (dataview.CurrentRow != null)
         {
-            var selectedItem = (MenuItem)dataview.CurrentRow.DataBoundItem;
-            var confirmResult = MessageBox.Show($"Are you sure you want to delete {selectedItem.Itemname}?",
+            var selectedItem = (SpecialOffer)dataview.CurrentRow.DataBoundItem;
+            var confirmResult = MessageBox.Show($"Are you sure you want to delete {selectedItem.Offername}?",
                                      "Confirm Delete",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -63,20 +61,20 @@ public partial class MenuUI : Form
                 {
                     using (var context = new NeondbContext())
                     {
-                        var itemToDelete = context.MenuItems.Find(selectedItem.Itemid);
+                        var itemToDelete = context.MenuItems.Find(selectedItem.Offerid);
                         if (itemToDelete != null)
                         {
                             context.MenuItems.Remove(itemToDelete);
                             context.SaveChanges();
-                            MessageBox.Show("Menu item deleted successfully!");
-                            LogAction($"deleted {selectedItem.Itemname}");
+                            MessageBox.Show("Special offer deleted successfully!");
+                            LogAction($"deleted {selectedItem.Offername}");
                             load_Table(sender, e);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error deleting menu item: {ex.Message}");
+                    MessageBox.Show($"Error deleting special offer: {ex.Message}");
                 }
             }
         }
@@ -86,7 +84,7 @@ public partial class MenuUI : Form
         }
     }
 
-    private void MenuUI_Load(object sender, EventArgs e)
+    private void OffersUI_Load(object sender, EventArgs e)
     {
         load_Table(sender, e);
     }
@@ -95,7 +93,7 @@ public partial class MenuUI : Form
     {
         using (var context = new NeondbContext())
         {
-            var data = context.MenuItems.ToList(); 
+            var data = context.SpecialOffers.ToList(); 
 
             dataview.DataSource = data;
         }

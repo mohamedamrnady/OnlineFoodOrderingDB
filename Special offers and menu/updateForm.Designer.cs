@@ -1,0 +1,222 @@
+using System.ComponentModel;
+
+namespace OFODBGUI.Models;
+
+partial class updateForm
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && (components != null))
+        {
+            components.Dispose();
+        }
+
+        base.Dispose(disposing);
+    }
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+        updateLabel = new System.Windows.Forms.Label();
+        tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+        labelId = new System.Windows.Forms.Label();
+        textBoxId = new System.Windows.Forms.TextBox();
+        labelName = new System.Windows.Forms.Label();
+        textBoxName = new System.Windows.Forms.TextBox();
+        labelDescription = new System.Windows.Forms.Label();
+        textBoxDescription = new System.Windows.Forms.TextBox();
+        labelCategory = new System.Windows.Forms.Label();
+        textBoxCategory = new System.Windows.Forms.TextBox();
+        labelAvailability = new System.Windows.Forms.Label();
+        checkBoxAvailability = new System.Windows.Forms.CheckBox();
+        buttonUpdate = new System.Windows.Forms.Button();
+        tableLayoutPanel1.SuspendLayout();
+        SuspendLayout();
+        // 
+        // updateLabel
+        // 
+        updateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+        updateLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+        updateLabel.Location = new System.Drawing.Point(277, -5);
+        updateLabel.Name = "updateLabel";
+        updateLabel.Size = new System.Drawing.Size(258, 49);
+        updateLabel.TabIndex = 0;
+        updateLabel.Text = "Update Menu Item";
+        updateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        // 
+        // tableLayoutPanel1
+        // 
+        tableLayoutPanel1.ColumnCount = 2;
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+        tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+        tableLayoutPanel1.Controls.Add(labelId, 0, 0);
+        tableLayoutPanel1.Controls.Add(textBoxId, 1, 0);
+        tableLayoutPanel1.Controls.Add(labelName, 0, 1);
+        tableLayoutPanel1.Controls.Add(textBoxName, 1, 1);
+        tableLayoutPanel1.Controls.Add(labelDescription, 0, 2);
+        tableLayoutPanel1.Controls.Add(textBoxDescription, 1, 2);
+        tableLayoutPanel1.Controls.Add(labelCategory, 0, 3);
+        tableLayoutPanel1.Controls.Add(textBoxCategory, 1, 3);
+        tableLayoutPanel1.Controls.Add(labelAvailability, 0, 4);
+        tableLayoutPanel1.Controls.Add(checkBoxAvailability, 1, 4);
+        tableLayoutPanel1.Location = new System.Drawing.Point(50, 60);
+        tableLayoutPanel1.Name = "tableLayoutPanel1";
+        tableLayoutPanel1.RowCount = 5;
+        tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+        tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+        tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+        tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+        tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+        tableLayoutPanel1.Size = new System.Drawing.Size(700, 240);
+        tableLayoutPanel1.TabIndex = 1;
+        // 
+        // labelId
+        // 
+        labelId.Dock = System.Windows.Forms.DockStyle.Fill;
+        labelId.Location = new System.Drawing.Point(3, 0);
+        labelId.Name = "labelId";
+        labelId.Size = new System.Drawing.Size(274, 40);
+        labelId.TabIndex = 0;
+        labelId.Text = "Item ID:";
+        labelId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxId
+        // 
+        textBoxId.Dock = System.Windows.Forms.DockStyle.Fill;
+        textBoxId.Location = new System.Drawing.Point(283, 3);
+        textBoxId.Name = "textBoxId";
+        textBoxId.ReadOnly = true;
+        textBoxId.Size = new System.Drawing.Size(414, 31);
+        textBoxId.TabIndex = 1;
+        // 
+        // labelName
+        // 
+        labelName.Dock = System.Windows.Forms.DockStyle.Fill;
+        labelName.Location = new System.Drawing.Point(3, 40);
+        labelName.Name = "labelName";
+        labelName.Size = new System.Drawing.Size(274, 40);
+        labelName.TabIndex = 2;
+        labelName.Text = "Item Name:";
+        labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxName
+        // 
+        textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
+        textBoxName.Location = new System.Drawing.Point(283, 43);
+        textBoxName.Name = "textBoxName";
+        textBoxName.Size = new System.Drawing.Size(414, 31);
+        textBoxName.TabIndex = 3;
+        // 
+        // labelDescription
+        // 
+        labelDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+        labelDescription.Location = new System.Drawing.Point(3, 80);
+        labelDescription.Name = "labelDescription";
+        labelDescription.Size = new System.Drawing.Size(274, 80);
+        labelDescription.TabIndex = 4;
+        labelDescription.Text = "Description:";
+        labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxDescription
+        // 
+        textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+        textBoxDescription.Location = new System.Drawing.Point(283, 83);
+        textBoxDescription.Multiline = true;
+        textBoxDescription.Name = "textBoxDescription";
+        textBoxDescription.Size = new System.Drawing.Size(414, 74);
+        textBoxDescription.TabIndex = 5;
+        // 
+        // labelCategory
+        // 
+        labelCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+        labelCategory.Location = new System.Drawing.Point(3, 160);
+        labelCategory.Name = "labelCategory";
+        labelCategory.Size = new System.Drawing.Size(274, 40);
+        labelCategory.TabIndex = 6;
+        labelCategory.Text = "Category:";
+        labelCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxCategory
+        // 
+        textBoxCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+        textBoxCategory.Location = new System.Drawing.Point(283, 163);
+        textBoxCategory.Name = "textBoxCategory";
+        textBoxCategory.Size = new System.Drawing.Size(414, 31);
+        textBoxCategory.TabIndex = 7;
+        // 
+        // labelAvailability
+        // 
+        labelAvailability.Dock = System.Windows.Forms.DockStyle.Fill;
+        labelAvailability.Location = new System.Drawing.Point(3, 200);
+        labelAvailability.Name = "labelAvailability";
+        labelAvailability.Size = new System.Drawing.Size(274, 40);
+        labelAvailability.TabIndex = 8;
+        labelAvailability.Text = "Available:";
+        labelAvailability.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // checkBoxAvailability
+        // 
+        checkBoxAvailability.AutoSize = true;
+        checkBoxAvailability.Dock = System.Windows.Forms.DockStyle.Fill;
+        checkBoxAvailability.Location = new System.Drawing.Point(283, 203);
+        checkBoxAvailability.Name = "checkBoxAvailability";
+        checkBoxAvailability.Size = new System.Drawing.Size(414, 34);
+        checkBoxAvailability.TabIndex = 9;
+        checkBoxAvailability.UseVisualStyleBackColor = true;
+        // 
+        // buttonUpdate
+        // 
+        buttonUpdate.Location = new System.Drawing.Point(325, 320);
+        buttonUpdate.Name = "buttonUpdate";
+        buttonUpdate.Size = new System.Drawing.Size(150, 50);
+        buttonUpdate.TabIndex = 2;
+        buttonUpdate.Text = "Update";
+        buttonUpdate.UseVisualStyleBackColor = true;
+        buttonUpdate.Click += buttonUpdate_Click;
+        // 
+        // updateForm
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        ClientSize = new System.Drawing.Size(800, 400);
+        Controls.Add(buttonUpdate);
+        Controls.Add(tableLayoutPanel1);
+        Controls.Add(updateLabel);
+        Text = "Update Menu Item";
+        tableLayoutPanel1.ResumeLayout(false);
+        tableLayoutPanel1.PerformLayout();
+        ResumeLayout(false);
+    }
+
+    private System.Windows.Forms.Label labelId;
+    private System.Windows.Forms.TextBox textBoxId;
+    private System.Windows.Forms.Label labelName;
+    private System.Windows.Forms.TextBox textBoxName;
+    private System.Windows.Forms.Label labelDescription;
+    private System.Windows.Forms.TextBox textBoxDescription;
+    private System.Windows.Forms.Label labelCategory;
+    private System.Windows.Forms.TextBox textBoxCategory;
+    private System.Windows.Forms.Label labelAvailability;
+    private System.Windows.Forms.CheckBox checkBoxAvailability;
+    private System.Windows.Forms.Button buttonUpdate;
+
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+
+    private System.Windows.Forms.Label updateLabel;
+
+    #endregion
+}

@@ -1,3 +1,5 @@
+using OFODBGUI.Models;
+
 namespace OFODBGUI;
 
 static class EntryPoint
@@ -7,6 +9,6 @@ static class EntryPoint
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new MainPortal());
+        Application.Run(new OffersUI());
     }
 }
