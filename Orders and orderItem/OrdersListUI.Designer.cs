@@ -6,9 +6,10 @@ partial class OrdersListUI
     private System.Windows.Forms.DataGridView dgvOrders;
     private System.Windows.Forms.Button btnDeleteOrder;
     private System.Windows.Forms.Button btnMarkComplete;
-    private System.Windows.Forms.TextBox outputbox;
+    private System.Windows.Forms.RichTextBox outputbox;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelButtons;
+    private System.Windows.Forms.Label titleLabel;
 
     protected override void Dispose(bool disposing)
     {
@@ -21,24 +22,36 @@ partial class OrdersListUI
         this.dgvOrders = new System.Windows.Forms.DataGridView();
         this.btnDeleteOrder = new System.Windows.Forms.Button();
         this.btnMarkComplete = new System.Windows.Forms.Button();
-        this.outputbox = new System.Windows.Forms.TextBox();
+        this.outputbox = new System.Windows.Forms.RichTextBox();
         this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
         this.tableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
+        this.titleLabel = new System.Windows.Forms.Label();
 
         ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
         this.tableLayoutPanelMain.SuspendLayout();
         this.tableLayoutPanelButtons.SuspendLayout();
         this.SuspendLayout();
 
-        // tableLayoutPanelMain — 3 rows: dgv (stretch), buttons (fixed), outputbox (fixed)
+        // titleLabel
+        this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+        this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+        this.titleLabel.Location = new System.Drawing.Point(460, 5);
+        this.titleLabel.Name = "titleLabel";
+        this.titleLabel.Size = new System.Drawing.Size(146, 38);
+        this.titleLabel.TabIndex = 99;
+        this.titleLabel.Text = "All Orders";
+        this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+
+        // tableLayoutPanelMain — 4 rows: title (fixed), dgv (stretch), buttons (fixed), outputbox (fixed)
         this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
         this.tableLayoutPanelMain.ColumnCount = 1;
         this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        this.tableLayoutPanelMain.RowCount = 3;
+        this.tableLayoutPanelMain.RowCount = 4;
+        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));   // title fixed
         this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));  // dgv stretches
-        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));  // buttons fixed
-        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F)); // outputbox fixed
-        this.tableLayoutPanelMain.Padding = new System.Windows.Forms.Padding(8);
+        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));  // buttons fixed
+        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 222F)); // outputbox fixed
+        this.tableLayoutPanelMain.Padding = new System.Windows.Forms.Padding(2);
         this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
 
         // dgvOrders
@@ -84,13 +97,14 @@ partial class OrdersListUI
         this.outputbox.Multiline = true;
         this.outputbox.Name = "outputbox";
         this.outputbox.ReadOnly = true;
-        this.outputbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+        this.outputbox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
         this.outputbox.TabIndex = 2;
 
         // Assemble main layout
-        this.tableLayoutPanelMain.Controls.Add(this.dgvOrders, 0, 0);
-        this.tableLayoutPanelMain.Controls.Add(this.tableLayoutPanelButtons, 0, 1);
-        this.tableLayoutPanelMain.Controls.Add(this.outputbox, 0, 2);
+        this.tableLayoutPanelMain.Controls.Add(this.titleLabel, 0, 0);
+        this.tableLayoutPanelMain.Controls.Add(this.dgvOrders, 0, 1);
+        this.tableLayoutPanelMain.Controls.Add(this.tableLayoutPanelButtons, 0, 2);
+        this.tableLayoutPanelMain.Controls.Add(this.outputbox, 0, 3);
 
         // OrdersListUI
         this.ClientSize = new System.Drawing.Size(984, 500);
