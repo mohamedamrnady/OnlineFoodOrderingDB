@@ -6,10 +6,9 @@ partial class OrdersListUI
     private System.Windows.Forms.DataGridView dgvOrders;
     private System.Windows.Forms.Button btnDeleteOrder;
     private System.Windows.Forms.Button btnMarkComplete;
-    private System.Windows.Forms.RichTextBox outputbox;
+    private System.Windows.Forms.TextBox outputbox;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelButtons;
-    private System.Windows.Forms.Button btnBack;
 
     protected override void Dispose(bool disposing)
     {
@@ -22,10 +21,9 @@ partial class OrdersListUI
         this.dgvOrders = new System.Windows.Forms.DataGridView();
         this.btnDeleteOrder = new System.Windows.Forms.Button();
         this.btnMarkComplete = new System.Windows.Forms.Button();
-        this.outputbox = new System.Windows.Forms.RichTextBox();
+        this.outputbox = new System.Windows.Forms.TextBox();
         this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
         this.tableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
-        this.btnBack = new System.Windows.Forms.Button();
 
         ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
         this.tableLayoutPanelMain.SuspendLayout();
@@ -38,8 +36,8 @@ partial class OrdersListUI
         this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
         this.tableLayoutPanelMain.RowCount = 3;
         this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));  // dgv stretches
-        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));  // buttons fixed
-        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F)); // outputbox fixed
+        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));  // buttons fixed
+        this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F)); // outputbox fixed
         this.tableLayoutPanelMain.Padding = new System.Windows.Forms.Padding(8);
         this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
 
@@ -55,15 +53,13 @@ partial class OrdersListUI
 
         // tableLayoutPanelButtons
         this.tableLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.tableLayoutPanelButtons.ColumnCount = 3;
-        this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+        this.tableLayoutPanelButtons.ColumnCount = 2;
+        this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+        this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
         this.tableLayoutPanelButtons.RowCount = 1;
         this.tableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
         this.tableLayoutPanelButtons.Controls.Add(this.btnDeleteOrder, 0, 0);
         this.tableLayoutPanelButtons.Controls.Add(this.btnMarkComplete, 1, 0);
-        this.tableLayoutPanelButtons.Controls.Add(this.btnBack, 2, 0);
         this.tableLayoutPanelButtons.Name = "tableLayoutPanelButtons";
         this.tableLayoutPanelButtons.TabIndex = 1;
 
@@ -83,20 +79,12 @@ partial class OrdersListUI
         this.btnMarkComplete.UseVisualStyleBackColor = true;
         this.btnMarkComplete.Click += new System.EventHandler(this.btnMarkComplete_Click);
 
-        // btnBack
-        this.btnBack.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.btnBack.Name = "btnBack";
-        this.btnBack.TabIndex = 2;
-        this.btnBack.Text = "Back";
-        this.btnBack.UseVisualStyleBackColor = true;
-        this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-
         // outputbox
         this.outputbox.Dock = System.Windows.Forms.DockStyle.Fill;
         this.outputbox.Multiline = true;
         this.outputbox.Name = "outputbox";
         this.outputbox.ReadOnly = true;
-        this.outputbox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+        this.outputbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
         this.outputbox.TabIndex = 2;
 
         // Assemble main layout
@@ -105,10 +93,10 @@ partial class OrdersListUI
         this.tableLayoutPanelMain.Controls.Add(this.outputbox, 0, 2);
 
         // OrdersListUI
-        this.ClientSize = new System.Drawing.Size(1256, 691);
+        this.ClientSize = new System.Drawing.Size(984, 500);
         this.Controls.Add(this.tableLayoutPanelMain);
         this.Name = "OrdersListUI";
-        this.Text = "All Orders";
+        this.Text = "All Orders View";
         this.Load += new System.EventHandler(this.OrdersListUI_Load);
 
         ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();

@@ -32,6 +32,7 @@ partial class MainPortal
         CustomerBtn = new Button();
         BranchBtn = new Button();
         DeliveryGuyBtn = new Button();
+        button4 = new Button();
         OrdersBtn = new Button();
         MenuBtn = new Button();
         OffersBtn = new Button();
@@ -67,14 +68,22 @@ partial class MainPortal
         DeliveryGuyBtn.Text = "Delivery Guy Form";
         DeliveryGuyBtn.UseVisualStyleBackColor = true;
         DeliveryGuyBtn.Click += DeliveryGuyBtn_Click;
-       
+        // 
+        // button4
+        // 
+        button4.Location = new Point(468, 116);
+        button4.Name = "button4";
+        button4.Size = new Size(226, 94);
+        button4.TabIndex = 3;
+        button4.Text = "button4";
+        button4.UseVisualStyleBackColor = true;
         // 
         // OrdersBtn
         // 
         OrdersBtn.Location = new Point(233, 116);
         OrdersBtn.Name = "OrdersBtn";
         OrdersBtn.Size = new Size(226, 94);
-        OrdersBtn.TabIndex = 3;
+        OrdersBtn.TabIndex = 4;
         OrdersBtn.Text = "Orders Form";
         OrdersBtn.UseVisualStyleBackColor = true;
         OrdersBtn.Click += OrdersBtn_Click;
@@ -107,6 +116,7 @@ partial class MainPortal
         Controls.Add(OffersBtn);
         Controls.Add(MenuBtn);
         Controls.Add(OrdersBtn);
+        Controls.Add(button4);
         Controls.Add(DeliveryGuyBtn);
         Controls.Add(BranchBtn);
         Controls.Add(CustomerBtn);
@@ -118,6 +128,7 @@ partial class MainPortal
     private System.Windows.Forms.Button CustomerBtn;
     private System.Windows.Forms.Button BranchBtn;
     private System.Windows.Forms.Button DeliveryGuyBtn;
+    private System.Windows.Forms.Button button4;
     private System.Windows.Forms.Button OrdersBtn;
     private System.Windows.Forms.Button MenuBtn;
     private System.Windows.Forms.Button OffersBtn;

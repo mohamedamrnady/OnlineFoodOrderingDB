@@ -13,6 +13,7 @@ namespace OFODBGUI.Customer
         public CustomerUI()
         {
             InitializeComponent();
+            BuildCustomerDesign();
         }
 
         private void CustomerUI_Load(object sender, EventArgs e)
@@ -20,6 +21,39 @@ namespace OFODBGUI.Customer
             load_Table();
         }
 
+        private void BuildCustomerDesign()
+        {
+            Text = "CustomerUI";
+            ClientSize = new Size(1250, 700);
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Label title = new Label
+            {
+                Text = "Customer",
+                Font = new Font("Segoe UI", 18, FontStyle.Bold),
+                AutoSize = true,
+                Location = new Point(560, 20)
+            };
+            Controls.Add(title);
+
+            dataview.Location = new Point(20, 75);
+            dataview.Size = new Size(1200, 300);
+            dataview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataview.MultiSelect = false;
+            dataview.ReadOnly = true;
+
+            insert.Location = new Point(120, 415);
+            update.Location = new Point(430, 415);
+            delete.Location = new Point(740, 415);
+            BackBtn.Location = new Point(1050, 415);
+
+            insert.Size = update.Size = delete.Size = BackBtn.Size = new Size(150, 55);
+
+            outputbox.Location = new Point(20, 530);
+            outputbox.Size = new Size(1200, 110);
+            outputbox.ReadOnly = true;
+        }
 
         private void LogAction(string message)
         {
