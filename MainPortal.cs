@@ -23,13 +23,13 @@ public partial class MainPortal : Form
 
     private void OffersBtn_Click(object sender, EventArgs e)
     {
-        // Temporary fix to remove error
-        MessageBox.Show("Special Offers form is not ready yet.");
+        var offersForm = new OffersUI();
+        offersForm.ShowDialog();
     }
 
     private void OrdersBtn_Click(object sender, EventArgs e)
     {
-        var ordersForm = new OFODBGUI.Orders_and_orderItem.OrdersUI();
+        var ordersForm = new Orders_and_orderItem.OrdersUI();
         ordersForm.ShowDialog();
     }
 

@@ -152,6 +152,11 @@ public partial class OrdersListUI : Form
         }
     }
 
+    private void btnBack_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
+
     protected override void OnClosed(EventArgs e)
     {
         _context?.Dispose();
